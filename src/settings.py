@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG =  os.getenv('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "users",
+    "core",
+    "curriculum",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = "src.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -74,6 +77,14 @@ WSGI_APPLICATION = "src.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    "postgres":{
+        'ENGINE': os.environ['DB_ENGINE'], # Add 'postgresql','mysql','sqlite
+        'NAME': os.environ["POSTGRES_DB"], # Or path to database file
+        'USER': os.environ["POSTGRES_USER"],  # Not used with sqlite3
+        'PASSWORD':os.environ["POSTGRES_PASSWORD"], # Not used with sqlite3
+        'HOST': os.environ['DB_HOST'],  # Set to empty string for localhost. Not used with sqlite3
+        'PORT': os.environ['DB_PORT']   
+    },
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
@@ -115,12 +126,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "assets/"
 
 # Configuración de archivos media:
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/media/img')
 MEDIA_URL = '/media/'
+
+# Modelo de Usuarios:
+
+AUTH_USER_MODEL = 'users.User'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

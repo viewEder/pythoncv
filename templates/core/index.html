@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<script type="text/javascript">
+    setTimeout(
+        function() {
+            window.location.href = '/accounts/login';
+        }, 5000
+    );
+</script>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+alias server="python manage.py runserver"
+alias serverdev="python manage.py runserver --databases=test"
+alias makemigrations="python manage.py makemigrations"
+alias migrate="python manage.py migrate"
+alias startapp="python manage.py startapp"
+alias createsuperuser="python manage.py createsuperuser"
