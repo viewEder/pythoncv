@@ -4,7 +4,11 @@
 {% block content %}
 <div class="text-center">
     <i class="bi bi-alarm"></i>
-    Cargando ...
+    Cargando ...  {{request.user}}
+    {% if request.user.is_authenticated %}
+        {{request.user}}
+        {% include 'core/menu.html' %}
+    {% endif %}
 </div>
 <script type="text/javascript">
     setTimeout(

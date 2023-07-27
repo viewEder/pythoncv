@@ -23,6 +23,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # Para el inicio de sesion:
     path("accounts/", include('django.contrib.auth.urls')),
+    path("curriculum/", include('curriculum.urls')),
 ]
 
 

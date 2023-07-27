@@ -135,7 +135,7 @@ STATICFILES_DIRS = (
 
 # Configuración de archivos media:
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/media/img')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/media')
 
 # Modelo de Usuarios:
 
@@ -147,4 +147,4 @@ AUTH_USER_MODEL = 'users.User'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Login:
-LOGIN_REDIRECT_URL = 'admin/'
+LOGIN_REDIRECT_URL = 'perfil'
