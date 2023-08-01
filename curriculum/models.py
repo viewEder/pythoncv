@@ -66,9 +66,9 @@ class Academy(models.Model):
 
     def __str__(self) -> str:
         if self.finish_date is None:
-            return f'{self.degree_obtained} - {self.finish_date}'
+            return f'{self.degree_obtained} - en Progreso'
         else:
-            return f'{self.degree_obtained} - en pogreso'
+            return f'{self.degree_obtained} - {self.finish_date}'
         
 class HobbiesExtras(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE )
