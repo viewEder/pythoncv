@@ -16,18 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# Opciones para ver imagenes:
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('core.urls')),
     path("admin/", admin.site.urls),
-    # Para el inicio de sesion:
-    path("accounts/", include('django.contrib.auth.urls')),
-    path("curriculum/", include('curriculum.urls')),
-]
+    path("", include('core.urls')),
+    # Para implementar el login
+    path('accounts/', include('django.contrib.auth.urls')),
+    # datauser:
+    path('users/',include('datauser.urls')),
+    # registration
+    path('user/',include('registration.urls')),
+    # perfiles
+    path('users/',include('perfiles.urls')),
+    # contacto:
+    path('users/contacto', include('contacto.urls')),
+    
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
-
-# para cargar las imagenes en desarrollo:
-if settings.DEBUG:
-    from django.conf.urls.static import static
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

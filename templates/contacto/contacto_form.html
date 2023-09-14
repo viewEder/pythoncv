@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% block titulo %}Información de{% endblock %}
+{% load static %}
+
+{% block contenido %}
+<section class="container">
+  <div class="row">
+
+    {% if 'ok' in request.GET %}
+      <div class="my-3">
+        <div class="sent-message">
+          Su mensaje ha sido enviado. Thank you!
+        </div>
+      </div>
+    {% endif %}
+    
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="row">
+          <div class="form-group col-md-6">
+            <label for="name">Nombre Completo</label>
+            {{ form.name }}
+          </div>
+          <div class="form-group col-md-6">
+            <label for="name">Correo Electrónico</label>
+            {{ form.email }}
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Asunto</label>
+        {{ form.subject }}
+      </div>
+      <div class="form-group">
+        <label for="name">Mensaje</label>
+        {{ form.message }}
+      </div>
+      
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-outline-primary col-6">Enviar Mensaje</button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,21 +1,76 @@
 {% extends 'core/base.html' %}
-{% block title %}Inicio{% endblock %}
+{% block titulo %}LandingPage Index{% endblock %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/miestilo.css' %}">
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+{% endblock %}
 
-{% block content %}
-<div class="text-center">
-    <i class="bi bi-alarm"></i>
-    Cargando ...  {{request.user}}
-    {% if request.user.is_authenticated %}
-        {{request.user}}
-        {% include 'core/menu.html' %}
-    {% endif %}
-</div>
-<script type="text/javascript">
-    setTimeout(
-        function() {
-            window.location.href = '/accounts/login';
-        }, 5000
-    );
-</script>
 
+{% block contenido %}
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="sections heros">
+    <div class="container">
+      <div class="row">
+        <div class="one-half column">
+          <h4 class="hero-heading">Stop coding non-responsive sites. Let users view sites from anywhere.</h4>
+          {% if request.user.is_authenticated %}
+            <a class="button button" href="{% url 'perfil' %}">Ir a tu perfil</a>
+          {% else %}
+            <a class="button button-primary" href="{% url 'login' %}">Ingresar</a>
+          {% endif %}
+        </div>
+        <div class="one-half column phones">
+          <img class="phone" src="{% static 'media/img/iphone.png' %}">
+          <img class="phone" src="{% static 'media/img/iphone.png' %}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections values">
+    <div class="container">
+      <div class="row">
+        <div class="one-third column value">
+          <h2 class="value-multiplier">67%</h2>
+          <h5 class="value-heading">Purchase Increase</h5>
+          <p class="value-description">Percentage of users more likely to purchase on mobile friendly site.</p>
+        </div>
+        <div class="one-third column value">
+          <h2 class="value-multiplier">90%</h2>
+          <h5 class="value-heading">Multi-device Users</h5>
+          <p class="value-description">Most of the world accesses the internet on multiple devices.</p>
+        </div>
+        <div class="one-third column value">
+          <h2 class="value-multiplier">66%</h2>
+          <h5 class="value-heading">Sad Users</h5>
+          <p class="value-description">Percentage of users that are frustrated with page load times.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections get-help">
+    <div class="container">
+      <h3 class="section-heading">Necesitas contratar un pathner?</h3>
+      <p class="section-description">Puedes encontrar multiples perfiles accediendo desde acá:</p>
+      <a class="button button-primary" href="{% url 'usuarios' %}">Ver Freelancers Registrados</a>
+    </div>
+  </div>
+
+  <div class="sections categories">
+    <div class="container">
+      
+      
+    </div>
+  </div>
+
+
+  {% block js %}<script src="{% static 'js/site.js' %}"></script>{% endblock %}
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 {% endblock %}

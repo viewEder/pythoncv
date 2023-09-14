@@ -27,21 +27,17 @@ def age_processor(request):
         return { 'mensaje': 'Usuario no conectado' }
 
 
-# Procesador de contexto para los skills:
-@login_required()
+
 def skill_procesor(request):
     # Query para traer todos los skills del usuario:
-    user_skills = Skills.objects.filter(user=request.user)
+    user_skills = Skills.objects.filter(user=request.user.id)
     return {
             "skills_user": user_skills
             }
 
-
-# Procesador de contexto para los educación:
-@login_required()
 def academy_processor(request):
     # Traigo todas las instituciones en donde estudié:
-    education_user = Academy.objects.filter(user=request.user)
+    education_user = Academy.objects.filter(user=request.user.id)
     return {
             "education_user": education_user
             }
