@@ -19,14 +19,6 @@ def contact(request):
             message = request.POST.get('message', '')
             # enviar correo electronico
 
-            # email = EmailMessage(
-            #     asunto, # "Haz recibido un nuevo mensaje de contacto"
-            #     cuerpo, # "De {} <{}>\n\nEscribió:\n\n{}".format(name, email, message)
-            #     email_origen, # "no-contestar@inbox.mailtrap.io"
-            #     email,destino, # ["ederlatru@gmail.com"]
-            #     reply_to = [email]
-            # )
-
             email = EmailMessage(
                 "Haz recibido un nuevo mensaje de contacto",
                 "De {} <{}>\n\nEscribió:\n\n{}".format(name, email, message),
