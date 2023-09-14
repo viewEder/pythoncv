@@ -9,5 +9,5 @@ django-ckeditor==6.3.2
 Pillow==9.5.0
 psycopg2==2.9.6
 psycopg2-binary==2.9.7
-pycparser==2.21
+pycparser==0.21.1
 python-dotenv==1.0.0
