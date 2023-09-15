@@ -141,7 +141,7 @@ AUTH_USER_MODEL = 'registration.User'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "assets/"
+STATIC_URL = "/assets/"
 
 # Configuración para archivos multimedia una ruta:
 MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/media/')  # Guarda los ficheros en media
@@ -167,11 +167,14 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 
-SESSION_COOKIE_SECURE = True
 
-CSRF_COOKIE_SECURE = True
 
 if DEBUG :
+
+    SESSION_COOKIE_SECURE = True
+
+    CSRF_COOKIE_SECURE = True
+
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
